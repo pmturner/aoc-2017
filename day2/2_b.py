@@ -10,8 +10,8 @@ for row in input_array:
     
     row_list = map(int, row.replace('\n', '').split('\t'))
     
-    for number in permutations(row_list, 2):
-        if number[0] % number[1] == 0:
-            total += number[0] / number[1]
+    for ordered_pair in permutations(row_list, 2):
+        if ordered_pair[0] % ordered_pair[1] == 0:
+            total += ordered_pair[0] / ordered_pair[1]
 
 print(total)
