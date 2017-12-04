@@ -15,7 +15,7 @@ for passphrase_line in input_list:
 		passphrase_array.append(''.join(passphrase))
 
 
-	#can't set a list
+	#can't set a list since they are unhashable
 	passphrase_array_set = set(passphrase_array)
 
 	if len(passphrase_list) == len(passphrase_array_set):
