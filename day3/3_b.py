@@ -2,22 +2,32 @@ x = 0
 y = 0
 dx = 0
 dy = -1
-grid = {}
-sum_value = 1
+spiral = {}
+checking = True
 coord_check = [(1,0),(1,1),(0,1),(-1,1),(-1,0),(-1,-1),(0,-1),(1,-1)]
 
-while sum_value < 277678:
-    grid[(x,y)] = sum_value
+while checking == True:
+    sum_value = 0
+
+    if (x == y == 0):
+        sum_value = 1
 
     for check in coord_check:
         check_x, check_y = check
 
-        if (x + check_x, y + check_y) in grid:
-            sum_value += grid[(x + check_x, y + check_y)]
+        if (x + check_x, y + check_y) in spiral:
+            sum_value += spiral[(x + check_x, y + check_y)]
+    
+    spiral[(x,y)] = sum_value
 
-    if (x == y) or (x < 0 and x == -y) or (x > 0 and x == 1-y):
+    #from another solution
+    if (x == y) or (x < 0 and x == -y) or (x > 0 and x == 1 - y):
         dx, dy = -dy, dx
-    x, y = x + dx, y + dy
+    x = x + dx
+    y = y + dy
+
+    if (sum_value > 277833):
+        checking = False
 
 print(sum_value)
     
